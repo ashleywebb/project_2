@@ -15,5 +15,17 @@ const app = express();
 app.engine('jsx', require ('express-react-views').createEngine());
 app.set('view engine', 'jsx')
 
+////////////
+// Routes //
+////////////
+// app.use('/plans', plansController)
+app.get('/', (req, res) => {
+    res.send("Your server is running!")
+})
+
+
+/////////////////////
+// Server Listener //
+/////////////////////
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Now listening on ${PORT}`))

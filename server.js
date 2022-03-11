@@ -5,7 +5,7 @@ require('dotenv').config();
 const express = require('express')
 const morgan = require ('morgan')
 const methodOverride = require('method-override')
-const fruitController = require('./controllers/plans')
+const plansController = require('./controllers/plans')
 const path = require('path')
 
 //////////////////////

@@ -37,6 +37,15 @@ router.get('/new', (req, res) => {
 
 
 // Delete
-router.get('')
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    Plans.findByIdAndDelete(id)
+        .then(() => {
+            res.redirect('/plans');
+        })
+        .catch((error) => {
+            res.status(400).json({error})
+        })
+})
 
 module.exports = router

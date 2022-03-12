@@ -19,3 +19,24 @@ router.get('/start', (req, res) => {
 })
 
 
+// Index
+router.get('/', (req, res) => {
+    Plans.find({})
+    .then((plans) => {
+        res.render("planner/Index", { plans })
+    })
+    .catch((error) => {
+        res.status(400).json({error})
+    })
+})
+
+// New
+router.get('/new', (req, res) => {
+    res.render('planner/New')
+});
+
+
+// Delete
+router.get('')
+
+module.exports = router

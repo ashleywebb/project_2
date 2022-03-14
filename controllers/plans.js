@@ -48,4 +48,58 @@ router.get('/:id', (req, res) => {
         })
 })
 
+
+// Update
+router.put('/:id', (req, res) => {
+    const {id} = req.params;
+    req.body.todoDone = req.body.todoDone === 'on' ? true : false;
+
+    Plans.findOneAndUpdate(id, req.body, { new: true })
+    .then(() => {
+        res.redirect(`/plans/${id}`)
+    })
+    .catch((error) => {
+        res.status(400).json({error})
+    })
+})
+
+
+//Create
+router.post('/', (req, res) => {
+    req.body.todoDone = req.body.todoDone === 'on' ? true : false;
+    Plans.create(req.body)
+        .then((createdPlans) => {
+            res.redirect(`/plans/${createdPlans._id}`)
+        })
+        .catch((error) => {
+            res.status(400).json({ error })
+        })
+})
+
+
+//Edit
+router.get('/:id/edit', (req, res) => {
+    const {id} = req.params
+    Plans.findById(id)
+        .then((fruit) => {
+            res.render('planner/Edit', { plans })
+        })
+        .catch((error) => {
+            res.status(400).json({error})
+        })
+})
+
+
+//Show
+router.get('/:id', (req, res) => {
+    const {id} = req.params;
+    Plans.findById(id)
+        .then((plans) => {
+            res.render('planner/Show', { plans })
+        })
+        .catch((error) => {
+            res.status(400).json({error})
+        })
+})
+
 module.exports = router

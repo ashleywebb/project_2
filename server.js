@@ -15,10 +15,19 @@ const app = express();
 app.engine('jsx', require ('express-react-views').createEngine());
 app.set('view engine', 'jsx')
 
+////////////////
+// Middleware //
+////////////////
+app.use(morgan("tiny"));
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
+app.use(express.static("public"));
+
+
 ////////////
 // Routes //
 ////////////
-// app.use('/plans', plansController)
+app.use('/plans', plansController)
 app.get('/', (req, res) => {
     res.send("Your server is running!")
 })

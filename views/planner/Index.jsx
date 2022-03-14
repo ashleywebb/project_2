@@ -1,4 +1,3 @@
-const { GridFSBucketWriteStream } = require('mongodb');
 const React = require('react')
 // const DefaultLayout = require ('../Default.jsx')
 

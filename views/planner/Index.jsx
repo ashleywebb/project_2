@@ -1,30 +1,42 @@
 const React = require('react')
-// const DefaultLayout = require ('../Default.jsx')
+const DefaultLayout = require ('../Default.jsx')
+const Calendar = require('react-calendar')
 
 class Index extends React.Component {
     render() {
-        const { plans } = this.props;
+        const { plans } = this.props
         return (
-            // <DefaultLayout>
+            <DefaultLayout>
             <div>
                 <nav>
-                    <a href="/plans/new">Create a new entry</a>
+                    <ul class="nav nav-tabs">
+                        <a href="/plans/new">New Entry |</a>
+                        <a href="/plans/edit"> | Edit an Entry</a>
+                    </ul>
                 </nav>
                 <ul>
                     {
-                        plans.map((plan) => {
-                            return (
-                                <li key={`${plan._id}`}>
-                                    <a href={`/plans/${plan._id}?_method=DELETE`} method="POST">
-                                        <input type="submit" value={`DELETE ${plan.name}`}/>
-                                    </a>
-                                </li>
-                            )
-                        })
+                        plans.map((planner) => (
+                            <article>
+                                <a href={`/plans/${planner._id}`}>
+                                    <h2>
+                                        {planner.date}
+                                    </h2>
+                                    <h3>
+                                        {planner.todo} : {planner.todoDone ? 'All done!' : 'Not done - get to it!'}
+                                    </h3>
+                                    <h3>
+                                        {planner.notes}
+                                    </h3>
+                                </a>
+                            </article>
+                        ))
                     }
                 </ul>
             </div>
-            //</DefaultLayout>
+            </DefaultLayout>
         )
     }
 }
+
+module.exports = Index

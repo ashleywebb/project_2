@@ -10,7 +10,7 @@ router.get('/start', (req, res) => {
     ]
     // Delete
     Plans.deleteMany({}).then((data) => {
-        Plans.create(startPlan).then((data) => {
+        Plans.create(startEmpty).then((data) => {
             res.json(data);
         })
     }).catch((err) => {
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
     const {id} = req.params;
     req.body.todoDone = req.body.todoDone === 'on' ? true : false;
 
-    Plans.findOneAndUpdate(id, req.body, { new: true })
+    Plans.findByIdAndUpdate(id, req.body, { new: true })
     .then(() => {
         res.redirect(`/plans/${id}`)
     })
@@ -81,8 +81,8 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     const {id} = req.params
     Plans.findById(id)
-        .then((fruit) => {
-            res.render('planner/Edit', { plans })
+        .then((planner) => {
+            res.render('planner/Edit', { planner })
         })
         .catch((error) => {
             res.status(400).json({error})
@@ -102,4 +102,4 @@ router.get('/:id', (req, res) => {
         })
 })
 
-module.exports = router
+module.exports = router;

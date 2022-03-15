@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('./connection')
 const { Schema, model } = mongoose;
 
 const plannerSchema = new Schema (
@@ -13,6 +13,6 @@ const plannerSchema = new Schema (
     }
 )
 
-const Plans = model('Plans', plannerSchema)
+const Plans = model("Plans", plannerSchema)
 
 module.exports = Plans

@@ -18,6 +18,7 @@ class Index extends React.Component {
                     {
                         plans.map((planner) => (
                             <article>
+                                <Calendar>
                                 <a href={`/plans/${planner._id}`}>
                                     <h2>
                                         {planner.date}
@@ -29,6 +30,7 @@ class Index extends React.Component {
                                         {planner.notes}
                                     </h3>
                                 </a>
+                                </Calendar>
                             </article>
                         ))
                     }

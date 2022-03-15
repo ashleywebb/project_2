@@ -1,10 +1,10 @@
 const React = require('react')
-// const DefaultLayout = require('../Default.jsx')
+const DefaultLayout = require('../Default.jsx')
 
 class New extends React.Component {
     render() {
         return (
-            //<DefaultLayout>
+            <DefaultLayout>
                 <form action = "/plans" method="post">
                     <fieldset>
                         <legend> Create a new entry </legend>
@@ -17,10 +17,13 @@ class New extends React.Component {
                         <label>
                             NOTES: <input type="text" name="notes" placeholder="enter any notes for the day."/>
                         </label>
+                        <label>
+                            DONE: <input type="checkbox" name="todoDone"/>
+                        </label>
                     </fieldset>
                     <input type="submit" value="create New Entry" />
                 </form>
-                // </DefaultLayout>
+                </DefaultLayout>
         )
     }
 }

@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
+  },
   "name": "project_2",
   "version": "1.0.0",
   "description": "",
@@ -20,6 +24,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
+    "react-big-calendar": "^0.39.3",
+    "react-calendar": "^3.7.0",
     "react-dom": "^17.0.2"
   }
 }
